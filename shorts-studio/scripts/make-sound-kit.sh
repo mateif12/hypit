@@ -39,6 +39,12 @@ ff -f lavfi -i "aevalsrc='0.9*sin(2*PI*(55*mod(t,$BEAT)-90*mod(t,$BEAT)^2)*1.0)*
    -filter_complex "[1:a]highpass=f=7000,volume='0.5*exp(-40*mod(t-0.25+10,0.5))':eval=frame[h];[0:a][h][2:a]amix=inputs=3:normalize=0,alimiter=limit=0.8,volume=0.9[m]" \
    -map "[m]" -ac 2 "$MUSIC/loop-120bpm.wav"
 
+# War drone: dark low bed for history/battle Shorts. D2 + A2 sines with slow swell + low rumble, 48 s.
+ff -f lavfi -i "aevalsrc='(0.30*sin(2*PI*73.42*t)+0.18*sin(2*PI*110*t)+0.10*sin(2*PI*146.83*t))*(0.75+0.25*sin(2*PI*t/8))':s=24000:d=48" \
+   -f lavfi -i "anoisesrc=d=48:c=brown:r=24000:a=0.6" \
+   -filter_complex "[1:a]lowpass=f=260,volume=0.7[r];[0:a][r]amix=inputs=2:normalize=0,afade=t=in:d=2,alimiter=limit=0.7[m]" \
+   -map "[m]" -ac 1 "$MUSIC/war-drone.wav"
+
 echo "Sound kit written to $SFX and $MUSIC:"
 for f in "$SFX"/*.wav "$MUSIC"/*.wav; do
   printf '  %-28s %ss\n' "$(basename "$f")" "$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f")"

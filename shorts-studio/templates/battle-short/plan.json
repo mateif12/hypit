@@ -1,0 +1,737 @@
+{
+ "title": "BATTLE OF CANNAE",
+ "year": "216 BC",
+ "fps": 60,
+ "hold_end_s": 0.6,
+ "seed": 216,
+ "camera": {
+  "x": 540,
+  "y": 980,
+  "zoom": 1.2
+ },
+ "bed": {
+  "file": "war-drone.wav",
+  "gain": 0.05
+ },
+ "voice_gain": 1,
+ "captions": {
+  "max_words": 3,
+  "max_chars": 20,
+  "lead_frames": 2,
+  "keywords": {
+   "Roman horsemen and": "horsemen",
+   "The trap snaps": "trap",
+   "Rome thinks it": "Rome"
+  }
+ },
+ "units": [
+  {
+   "id": "rome",
+   "side": "red",
+   "x": 540,
+   "y": 560,
+   "w": 560,
+   "d": 250,
+   "rows": 20,
+   "cols": 64
+  },
+  {
+   "id": "rome-cav",
+   "side": "red",
+   "x": 150,
+   "y": 600,
+   "w": 150,
+   "d": 80,
+   "rows": 6,
+   "cols": 16
+  },
+  {
+   "id": "ally-cav",
+   "side": "red",
+   "x": 930,
+   "y": 600,
+   "w": 150,
+   "d": 80,
+   "rows": 6,
+   "cols": 16
+  },
+  {
+   "id": "center",
+   "side": "dark",
+   "x": 540,
+   "y": 1150,
+   "w": 500,
+   "d": 70,
+   "rows": 6,
+   "cols": 56
+  },
+  {
+   "id": "afr-l",
+   "side": "dark",
+   "x": 215,
+   "y": 1150,
+   "w": 140,
+   "d": 120,
+   "rows": 9,
+   "cols": 12
+  },
+  {
+   "id": "afr-r",
+   "side": "dark",
+   "x": 865,
+   "y": 1150,
+   "w": 140,
+   "d": 120,
+   "rows": 9,
+   "cols": 12
+  },
+  {
+   "id": "cav-l",
+   "side": "dark",
+   "x": 120,
+   "y": 1010,
+   "w": 150,
+   "d": 80,
+   "rows": 6,
+   "cols": 16
+  },
+  {
+   "id": "cav-r",
+   "side": "dark",
+   "x": 960,
+   "y": 1010,
+   "w": 150,
+   "d": 80,
+   "rows": 6,
+   "cols": 16
+  },
+  {
+   "id": "hannibal",
+   "side": "dark",
+   "x": 540,
+   "y": 1290,
+   "w": 70,
+   "d": 34,
+   "rows": 3,
+   "cols": 8
+  }
+ ],
+ "events": [
+  {
+   "on": "start",
+   "type": "Camera",
+   "x": 540,
+   "y": 960,
+   "zoom": 1.25,
+   "for": 240
+  },
+  {
+   "on": "Rome marches",
+   "type": "Move",
+   "unit": "rome",
+   "y": 600,
+   "for": 180,
+   "ease": "out"
+  },
+  {
+   "on": "eighty-six thousand",
+   "offset": -4,
+   "type": "Label",
+   "unit": "rome",
+   "text": "ROME ~86,000",
+   "tone": "red",
+   "dy": -40,
+   "until": "So he does"
+  },
+  {
+   "on": "fifty thousand",
+   "offset": -4,
+   "type": "Label",
+   "unit": "center",
+   "text": "HANNIBAL ~50,000",
+   "tone": "blue",
+   "dy": -50,
+   "until": "So he does"
+  },
+  {
+   "on": "just past thirty",
+   "type": "Camera",
+   "x": 540,
+   "y": 1180,
+   "zoom": 1.5,
+   "for": 70
+  },
+  {
+   "on": "just past thirty",
+   "offset": 6,
+   "type": "Label",
+   "unit": "hannibal",
+   "text": "HANNIBAL",
+   "tone": "blue",
+   "dy": -30,
+   "until": "pushes his center"
+  },
+  {
+   "on": "two Roman armies",
+   "offset": -4,
+   "type": "Label",
+   "x": 540,
+   "y": 1380,
+   "dy": 0,
+   "text": "2 ROMAN ARMIES DESTROYED",
+   "tone": "neutral",
+   "until": "So he does"
+  },
+  {
+   "on": "So he does",
+   "type": "Camera",
+   "x": 540,
+   "y": 980,
+   "zoom": 1.22,
+   "for": 80
+  },
+  {
+   "on": "pushes his center",
+   "type": "Move",
+   "unit": "center",
+   "y": 1080,
+   "curve": -120,
+   "for": 70
+  },
+  {
+   "on": "pushes his center",
+   "type": "Arrow",
+   "points": [
+    [
+     540,
+     1060
+    ],
+    [
+     540,
+     900
+    ]
+   ],
+   "colour": "blue",
+   "draw": 26,
+   "hold": 50,
+   "retract": 20
+  },
+  {
+   "on": "center forward",
+   "type": "Label",
+   "unit": "center",
+   "text": "GAULS & SPANIARDS",
+   "tone": "blue",
+   "dy": -60,
+   "until": "The legions slam"
+  },
+  {
+   "on": "best veterans",
+   "type": "Label",
+   "unit": "afr-l",
+   "text": "VETERANS",
+   "tone": "blue",
+   "dy": -30,
+   "until": "The legions slam"
+  },
+  {
+   "on": "best veterans",
+   "offset": 6,
+   "type": "Label",
+   "unit": "afr-r",
+   "text": "VETERANS",
+   "tone": "blue",
+   "dy": -30,
+   "until": "The legions slam"
+  },
+  {
+   "on": "The legions slam",
+   "type": "Arrow",
+   "points": [
+    [
+     400,
+     700
+    ],
+    [
+     400,
+     880
+    ]
+   ],
+   "colour": "pink",
+   "draw": 24,
+   "hold": 30,
+   "retract": 18
+  },
+  {
+   "on": "The legions slam",
+   "offset": 3,
+   "type": "Arrow",
+   "points": [
+    [
+     540,
+     700
+    ],
+    [
+     540,
+     900
+    ]
+   ],
+   "colour": "pink",
+   "draw": 24,
+   "hold": 30,
+   "retract": 18
+  },
+  {
+   "on": "The legions slam",
+   "offset": 6,
+   "type": "Arrow",
+   "points": [
+    [
+     680,
+     700
+    ],
+    [
+     680,
+     880
+    ]
+   ],
+   "colour": "pink",
+   "draw": 24,
+   "hold": 30,
+   "retract": 18
+  },
+  {
+   "on": "legions slam",
+   "offset": 8,
+   "type": "Move",
+   "unit": "rome",
+   "y": 820,
+   "for": 50,
+   "ease": "in"
+  },
+  {
+   "on": "into the center",
+   "offset": 10,
+   "type": "Flash",
+   "points": [
+    [
+     420,
+     950
+    ],
+    [
+     540,
+     930
+    ],
+    [
+     660,
+     950
+    ]
+   ],
+   "size": 70,
+   "sfx": "hit",
+   "gain": 0.45
+  },
+  {
+   "on": "into the center",
+   "offset": 10,
+   "type": "Shake",
+   "for": 20,
+   "amp": 10
+  },
+  {
+   "on": "It bends",
+   "type": "Move",
+   "unit": "center",
+   "y": 1110,
+   "curve": -20,
+   "for": 40
+  },
+  {
+   "on": "It bends",
+   "type": "Move",
+   "unit": "rome",
+   "y": 860,
+   "for": 50
+  },
+  {
+   "on": "falls back",
+   "type": "Move",
+   "unit": "center",
+   "y": 1190,
+   "curve": 110,
+   "for": 60
+  },
+  {
+   "on": "falls back",
+   "type": "Move",
+   "unit": "rome",
+   "y": 920,
+   "for": 70
+  },
+  {
+   "on": "pushes deeper",
+   "type": "Move",
+   "unit": "rome",
+   "y": 990,
+   "w": 470,
+   "d": 300,
+   "for": 70
+  },
+  {
+   "on": "pushes deeper",
+   "offset": 6,
+   "type": "Label",
+   "x": 540,
+   "y": 1345,
+   "dy": 0,
+   "text": "THE POCKET",
+   "tone": "neutral",
+   "until": "Then Hannibal's"
+  },
+  {
+   "on": "Then Hannibal's",
+   "type": "Camera",
+   "x": 380,
+   "y": 820,
+   "zoom": 1.3,
+   "for": 70
+  },
+  {
+   "on": "Hannibal's cavalry",
+   "type": "Label",
+   "unit": "cav-l",
+   "text": "Carthaginian cavalry",
+   "tone": "blue",
+   "dy": -30,
+   "until": "rides all"
+  },
+  {
+   "on": "Hannibal's cavalry",
+   "type": "Move",
+   "unit": "cav-l",
+   "x": 150,
+   "y": 690,
+   "for": 60,
+   "ease": "in"
+  },
+  {
+   "on": "Roman horsemen",
+   "offset": -6,
+   "type": "Label",
+   "unit": "rome-cav",
+   "text": "ROMAN CAVALRY",
+   "tone": "red",
+   "dy": -30,
+   "until": "rides all"
+  },
+  {
+   "on": "crushes",
+   "offset": 4,
+   "type": "Flash",
+   "points": [
+    [
+     150,
+     645
+    ],
+    [
+     105,
+     660
+    ],
+    [
+     195,
+     650
+    ]
+   ],
+   "size": 60,
+   "sfx": "hit",
+   "gain": 0.4
+  },
+  {
+   "on": "crushes",
+   "offset": 4,
+   "type": "Shake",
+   "for": 18,
+   "amp": 8
+  },
+  {
+   "on": "crushes",
+   "offset": 8,
+   "type": "Move",
+   "unit": "rome-cav",
+   "rout": 1,
+   "dead": 0.5,
+   "for": 80,
+   "ease": "out"
+  },
+  {
+   "on": "crushes",
+   "type": "Camera",
+   "x": 540,
+   "y": 720,
+   "zoom": 1.0,
+   "for": 90,
+   "offset": 30
+  },
+  {
+   "on": "rides all",
+   "type": "Arrow",
+   "points": [
+    [
+     150,
+     650
+    ],
+    [
+     230,
+     380
+    ],
+    [
+     540,
+     300
+    ],
+    [
+     850,
+     380
+    ],
+    [
+     930,
+     560
+    ]
+   ],
+   "colour": "blue",
+   "draw": 80,
+   "hold": 60,
+   "retract": 30,
+   "width": 24,
+   "sfx": "whoosh",
+   "gain": 0.5
+  },
+  {
+   "on": "rides all",
+   "offset": 10,
+   "type": "Move",
+   "unit": "cav-l",
+   "path": [
+    [
+     150,
+     650
+    ],
+    [
+     230,
+     380
+    ],
+    [
+     540,
+     300
+    ],
+    [
+     850,
+     380
+    ],
+    [
+     930,
+     560
+    ]
+   ],
+   "for": 95,
+   "ease": "inout"
+  },
+  {
+   "on": "behind them",
+   "offset": 24,
+   "type": "Flash",
+   "points": [
+    [
+     930,
+     590
+    ],
+    [
+     890,
+     610
+    ]
+   ],
+   "size": 55,
+   "sfx": "hit",
+   "gain": 0.3
+  },
+  {
+   "on": "behind them",
+   "offset": 28,
+   "type": "Move",
+   "unit": "ally-cav",
+   "rout": 1,
+   "dead": 0.4,
+   "for": 80,
+   "ease": "out"
+  },
+  {
+   "on": "veterans turn inward",
+   "type": "Camera",
+   "x": 540,
+   "y": 980,
+   "zoom": 1.12,
+   "for": 70
+  },
+  {
+   "on": "turn inward",
+   "type": "Move",
+   "unit": "afr-l",
+   "x": 260,
+   "y": 990,
+   "w": 240,
+   "d": 90,
+   "angle": 90,
+   "for": 60
+  },
+  {
+   "on": "turn inward",
+   "type": "Move",
+   "unit": "afr-r",
+   "x": 820,
+   "y": 990,
+   "w": 240,
+   "d": 90,
+   "angle": -90,
+   "for": 60
+  },
+  {
+   "on": "turn inward",
+   "type": "Arrow",
+   "points": [
+    [
+     170,
+     1000
+    ],
+    [
+     290,
+     1000
+    ]
+   ],
+   "colour": "blue",
+   "draw": 20,
+   "hold": 40,
+   "retract": 16
+  },
+  {
+   "on": "turn inward",
+   "type": "Arrow",
+   "points": [
+    [
+     910,
+     1000
+    ],
+    [
+     790,
+     1000
+    ]
+   ],
+   "colour": "blue",
+   "draw": 20,
+   "hold": 40,
+   "retract": 16
+  },
+  {
+   "on": "turn inward",
+   "type": "Move",
+   "unit": "cav-l",
+   "x": 540,
+   "y": 800,
+   "w": 320,
+   "d": 60,
+   "for": 90
+  },
+  {
+   "on": "trap snaps",
+   "type": "Move",
+   "unit": "center",
+   "y": 1160,
+   "curve": 60,
+   "for": 40
+  },
+  {
+   "on": "snaps shut",
+   "offset": 4,
+   "type": "Flash",
+   "points": [
+    [
+     540,
+     830
+    ],
+    [
+     320,
+     880
+    ],
+    [
+     760,
+     880
+    ],
+    [
+     300,
+     1020
+    ],
+    [
+     780,
+     1020
+    ],
+    [
+     420,
+     1150
+    ],
+    [
+     660,
+     1150
+    ],
+    [
+     540,
+     1160
+    ]
+   ],
+   "size": 70,
+   "sfx": "hit",
+   "gain": 0.6
+  },
+  {
+   "on": "snaps shut",
+   "offset": 4,
+   "type": "Shake",
+   "for": 30,
+   "amp": 16
+  },
+  {
+   "on": "snaps shut",
+   "offset": 10,
+   "type": "Label",
+   "unit": "rome",
+   "text": "ENCIRCLED",
+   "tone": "red",
+   "dy": -20,
+   "until": "Ancient writers"
+  },
+  {
+   "on": "Ancient writers",
+   "type": "Camera",
+   "x": 540,
+   "y": 1000,
+   "zoom": 1.25,
+   "for": 240
+  },
+  {
+   "on": "Ancient writers",
+   "type": "Move",
+   "unit": "rome",
+   "dead": 1,
+   "rout": 0.12,
+   "w": 440,
+   "d": 280,
+   "for": 150
+  },
+  {
+   "on": "seventy thousand",
+   "offset": -6,
+   "type": "Stat",
+   "number": "70,000",
+   "sub": "Roman dead, by ancient accounts",
+   "sfx": "hit",
+   "gain": 0.3
+  }
+ ]
+}

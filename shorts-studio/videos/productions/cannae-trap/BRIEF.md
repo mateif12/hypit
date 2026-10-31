@@ -8,4 +8,4 @@
 - **Cost:** zero. No paid APIs, credits or subscriptions without asking first. Local rendering only.
 - **Format:** 1080×1920, 30 fps, H.264/AAC.
 - **Gates:** (1) the user approves the script → (2) the user uploads the MP3 → (3) production and render.
-- **Status:** script delivered and waiting for approval (2026-10-31).
+- **Status:** script approved; MP3 received; video rendered (output/final.mp4). See PROGRESS.md.

@@ -1,7 +1,9 @@
 node_modules/
 .hypit/
+.work/
 packages/*/dist/
-videos/**/output/
+videos/**/output/*
+!videos/productions/*/output/final.mp4
 videos/references/**/source.*
-*.part
 videos/references/**/evidence/
+*.part

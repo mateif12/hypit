@@ -20,6 +20,7 @@
     "@fontsource-variable/montserrat": "^5.3.0",
     "@fontsource/anton": "^5.3.0",
     "@hypit/fontsource": "^0.2.0",
+    "@shorts/battle-map": "file:packages/battle-map",
     "@shorts/kinetic": "file:packages/shorts-kinetic"
   }
 }
