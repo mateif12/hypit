@@ -1,0 +1,29 @@
+{
+  "name": "@shorts/kinetic",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Project component: Shorts-style kinetic typography scene (hook slams, word pops, punch words, stats, list beats, CTA, progress bar, flash cuts, camera push). Local rendering only.",
+  "hypit": {
+    "activation": "./dist/activation.js"
+  },
+  "exports": {
+    ".": "./dist/render.js"
+  },
+  "files": ["dist", "README.md"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepack": "npm run build"
+  },
+  "peerDependencies": {
+    "@hypit/hypit": "^0.3.1"
+  },
+  "dependencies": {
+    "@hypit/composition": "^0.1.0",
+    "@hypit/media": "^0.1.0",
+    "@hypit/timeline": "^0.1.0",
+    "@hypit/spatial": "^0.1.0",
+    "@hypit/temporal": "^0.1.0",
+    "@hypit/html-program": "^0.1.0"
+  }
+}

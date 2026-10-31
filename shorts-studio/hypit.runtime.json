@@ -1,0 +1,35 @@
+{
+  "format": "hypit.runtime-local@1",
+  "dataRoot": ".hypit/execution",
+  "credentials": {},
+  "endpoints": {
+    "media.local": {
+      "use": "@hypit/media-local",
+      "config": { "defaultConcurrency": 2 }
+    },
+    "html.local": {
+      "use": "@hypit/provider-html-local",
+      "config": {
+        "chromePath": "/opt/pw-browsers/chromium-1243/chrome-linux64/chrome",
+        "workers": 3,
+        "defaultConcurrency": 1
+      }
+    },
+    "whisperx.local": {
+      "use": "@hypit/provider-whisperx-local",
+      "config": {
+        "expectedModel": "small",
+        "expectedDevice": "cpu",
+        "expectedCompute": "int8",
+        "expectedBatchSize": 8,
+        "alignmentLanguages": ["en"]
+      }
+    }
+  },
+  "bindings": {
+    "@hypit/html-program@1#rasterize-visual": "html.local",
+    "@hypit/media-operations@1#render-timeline-audio": "media.local",
+    "@hypit/media-operations@1#mux-program-media": "media.local",
+    "@hypit/whisperx@1#whisperx-alignment": "whisperx.local"
+  }
+}

@@ -1,0 +1,73 @@
+<?svml using="@hypit/markup@1"?>
+<svml>
+  <import as="time" from="@hypit/timeline-author@1"/>
+  <import as="spatial" from="@hypit/spatial@1"/>
+  <import as="media" from="@hypit/media@1"/>
+  <import as="fonts" from="@hypit/fontsource@1"/>
+  <import as="kin" from="@shorts/kinetic@1"/>
+  <import as="film" from="@hypit/film@1"/>
+  <import as="html" from="@hypit/html-video@1"/>
+  <import as="mediaop" from="@hypit/media-operations@1"/>
+  <import as="audio" from="@hypit/audio-track@1"/>
+  <import as="look" source="../recipes/look.svs"/>
+
+  <time:Clock id="clock" frame-rate="30"/>
+  <time:Timeline id="program" clock={clock} end="12s">
+    <time:Instant id="hook" at="0s"/>
+    <time:Instant id="setup" at="1.6s"/>
+    <time:Instant id="stat" at="3.6s"/>
+    <time:Instant id="tip-1" at="5.6s"/>
+    <time:Instant id="tip-2" at="7.2s"/>
+    <time:Instant id="punch" at="8.8s"/>
+    <time:Instant id="cta" at="10.2s"/>
+  </time:Timeline>
+  <!-- Sound kit (self-synthesized by scripts/make-sound-kit.sh; royalty-free) -->
+  <media:Audio id="music-src" src="../../../../assets/music/loop-120bpm.wav"/>
+  <media:Audio id="hit-src" src="../../../../assets/sfx/hit.wav"/>
+  <media:Audio id="whoosh-src" src="../../../../assets/sfx/whoosh.wav"/>
+  <media:Audio id="pop-src" src="../../../../assets/sfx/pop.wav"/>
+  <media:Audio id="ding-src" src="../../../../assets/sfx/ding.wav"/>
+  <mediaop:Normalize id="music" source={music-src} clock={clock} video="none" audio="default" span-authority="audio"/>
+  <mediaop:Normalize id="hit" source={hit-src} clock={clock} video="none" audio="default" span-authority="audio"/>
+  <mediaop:Normalize id="whoosh" source={whoosh-src} clock={clock} video="none" audio="default" span-authority="audio"/>
+  <mediaop:Normalize id="pop" source={pop-src} clock={clock} video="none" audio="default" span-authority="audio"/>
+  <mediaop:Normalize id="ding" source={ding-src} clock={clock} video="none" audio="default" span-authority="audio"/>
+  <time:Window id="sfx-hook" timeline={program.timeline} from={program.hook} for="0.7s"/>
+  <time:Window id="sfx-setup" timeline={program.timeline} from={program.setup} for="14f"/>
+  <time:Window id="sfx-stat" timeline={program.timeline} from={program.stat} for="0.7s"/>
+  <time:Window id="sfx-tip-1" timeline={program.timeline} from={program.tip-1} for="4f"/>
+  <time:Window id="sfx-tip-2" timeline={program.timeline} from={program.tip-2} for="4f"/>
+  <time:Window id="sfx-punch" timeline={program.timeline} from={program.punch} for="0.7s"/>
+  <time:Window id="sfx-cta" timeline={program.timeline} from={program.cta} for="0.9s"/>
+  <audio:Track id="mix" timeline={program.timeline}>
+    <audio:Clip id="bed" source={music.media} during={program.window} gain="0.35" fade-in="6f" fade-out="1s"/>
+    <audio:Clip id="hook-hit" source={hit.media} during={sfx-hook} gain="0.8"/>
+    <audio:Clip id="setup-whoosh" source={whoosh.media} during={sfx-setup} gain="0.9"/>
+    <audio:Clip id="stat-hit" source={hit.media} during={sfx-stat} gain="0.6"/>
+    <audio:Clip id="tip-1-pop" source={pop.media} during={sfx-tip-1} gain="0.7"/>
+    <audio:Clip id="tip-2-pop" source={pop.media} during={sfx-tip-2} gain="0.7"/>
+    <audio:Clip id="punch-hit" source={hit.media} during={sfx-punch} gain="0.9"/>
+    <audio:Clip id="cta-ding" source={ding.media} during={sfx-cta} gain="0.8"/>
+  </audio:Track>
+
+  <spatial:Canvas id="canvas" width="1080" height="1920"/>
+  <fonts:Face id="display-face" package="@fontsource/anton" weight="400" style="normal"/>
+  <media:FontStack id="display" primary={display-face}/>
+
+  <kin:Scene id="story" timeline={program.timeline} within={canvas.bounds} font={display}
+    during={program.window} accent="#ffd60a" background="#0b0b12" background-2="#3a1d7a">
+    <kin:Beat id="hook" kind="hook" text="Your videos are *too slow*" at={program.hook}/>
+    <kin:Beat id="setup" kind="line" text="Viewers decide in *1.5 seconds*" at={program.setup}/>
+    <kin:Beat id="stat" kind="stat" text="70% swipe away" sub="in the first 3 seconds" at={program.stat}/>
+    <kin:Beat id="tip-1" kind="list" text="1. Cut every *pause*" at={program.tip-1}/>
+    <kin:Beat id="tip-2" kind="list" text="2. Move on *every beat*" at={program.tip-2}/>
+    <kin:Beat id="punch" kind="punch" text="FASTER" at={program.punch}/>
+    <kin:Beat id="cta" kind="cta" text="*Follow* for part 2" at={program.cta}/>
+  </kin:Scene>
+
+  <film:Film id="main" canvas={canvas.canvas} timeline={program.timeline} appearance={look.film.main}>
+    <film:Track source={story.visual}/>
+    <film:Track source={mix.audio}/>
+  </film:Film>
+  <html:Video id="final" composition={main.composition} timeline={program.timeline}/>
+</svml>

@@ -1,0 +1,6 @@
+node_modules/
+.hypit/
+packages/*/dist/
+videos/**/output/
+videos/references/**/source.*
+*.part
