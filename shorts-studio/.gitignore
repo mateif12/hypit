@@ -4,3 +4,4 @@ packages/*/dist/
 videos/**/output/
 videos/references/**/source.*
 *.part
+videos/references/**/evidence/
